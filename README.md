@@ -1,4 +1,4 @@
-# cat_comm
+# Cat Comm
 
 ## サイト概要
 
