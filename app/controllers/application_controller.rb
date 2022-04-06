@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   devise_group :customer_or_admin, contains: [:customer, :admin]
-  
+
   private
 
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
-      about_path
+      admin_customers_path
     else
-      root_path
+      post_images_path
     end
   end
 
@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
     else
   		root_path
     end
-  end  
-  
+  end
+
 end
