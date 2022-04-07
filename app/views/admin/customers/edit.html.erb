@@ -1,2 +1,22 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h2><%= @customer.name %>さまの情報編集</h2>
+<%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch, local: true do |f| %>
+    <table>
+      <tr>
+        <td><%= f.label :ユーザー名 %></td>
+        <td><%= f.text_field :name, autofocus: true %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :メールアドレス %></td>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :会員ステータス %></td>
+        <td><%= f.radio_button :is_deleted, false %> <%= f.label :is_deleted, "会員", value: true %>
+            <%= f.radio_button :is_deleted, true %> <%= f.label :is_deleted, "退会", value: false %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.submit "変更内容を保存", class: 'btn btn-md' %></td>
+      </tr>
+    </table>
+<% end %>

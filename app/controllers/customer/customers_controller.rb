@@ -16,6 +16,14 @@ class Customer::CustomersController < ApplicationController
       render :edit
     end
   end
+  
+  # 退会確認画面
+  def unsubscribe
+  end
+
+  # 退会処理
+  def withdraw
+  end
 
   private
 
