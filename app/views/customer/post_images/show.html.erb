@@ -8,7 +8,8 @@
     <h5>説明<br><%= @post_image.caption %></h5>
     <h6>投稿者: <%= @post_image.customer.name %></h6>
     <h6>投稿日: <%= @post_image.created_at.strftime('%Y/%m/%d') %></h6>
-    <% if @post_image.customer == current_customer %>
+    <!--ログインしているのが投稿ユーザーもしくは管理者の場合、削除ボタン表示-->
+    <% if @post_image.customer == current_customer || admin_signed_in? %>
       <%= link_to "削除", destroy_post_image_path(@post_image), method: :delete, data: {confirm: "本当に削除しますか？"} %>
     <% end %>
     <% if @post_image.customer.is_deleted == true %>

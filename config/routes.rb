@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     patch 'cats/:id' => 'post_images#update', as: 'update_post_image'
     delete 'cats/:id' => 'post_images#destroy', as: 'destroy_post_image'
     get 'unsubscribe' => 'customers#unsubscribe'
-    patch 'withdraw'
+    patch 'customers/withdraw'
   end
 
   end

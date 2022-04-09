@@ -16,13 +16,17 @@ class Customer::CustomersController < ApplicationController
       render :edit
     end
   end
-  
+
   # 退会確認画面
   def unsubscribe
   end
 
   # 退会処理
   def withdraw
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private

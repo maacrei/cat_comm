@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
 <h2>ユーザー情報編集</h2>
 <%= form_with model: @customer, url: myupdate_path, local: true do |f| %>
     <table>
@@ -14,4 +17,10 @@
       </tr>
     </table>
 <% end %>
+    </div>
+    <div class="col-6">
+      <%= link_to "退会する", unsubscribe_path, class: 'btn btn-md' %>
+    </div>
+  </div>
+</div>
 
