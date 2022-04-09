@@ -6,21 +6,21 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
-  # 会員用 URL /customers/sign_in ...
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "customer/registrations",
-    sessions: 'customer/sessions'
+  # 会員用 URL /users/sign_in ...
+  devise_for :users, skip: [:passwords], controllers: {
+    registrations: "user/registrations",
+    sessions: 'user/sessions'
   }
 
-  scope module: :customer do
+  scope module: :user do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    get 'mypage' => 'customers#show', as: 'mypage'
-    get 'mydata/edit' => 'customers#edit', as: 'myedit'
-    patch 'mydata' => 'customers#update', as: 'myupdate'
+    get 'mypage' => 'users#show', as: 'mypage'
+    get 'mydata/edit' => 'users#edit', as: 'myedit'
+    patch 'mydata' => 'users#update', as: 'myupdate'
     get 'cats/new' => 'post_images#new', as: 'new_post_image'
     post 'cats' => 'post_images#create'
     get 'cats' => 'post_images#index', as: 'post_images'
@@ -28,8 +28,8 @@ Rails.application.routes.draw do
     get 'cats/:id/edit' => 'post_images#edit', as: 'edit_post_image'
     patch 'cats/:id' => 'post_images#update', as: 'update_post_image'
     delete 'cats/:id' => 'post_images#destroy', as: 'destroy_post_image'
-    get 'unsubscribe' => 'customers#unsubscribe'
-    patch 'customers/withdraw'
+    get 'unsubscribe' => 'users#unsubscribe'
+    patch 'users/withdraw'
   end
 
-  end
+end
