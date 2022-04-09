@@ -1,0 +1,2 @@
+module Customer::PostImagesHelper
+end

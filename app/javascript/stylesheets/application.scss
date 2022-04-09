@@ -1,0 +1,24 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+body {
+  background-color:#F5FFFA;
+}
+header {
+  background-color:#CEF9DC;
+}
+footer {
+  background-color:#CEF9DC;
+}
+// ボタンの色
+.btn {
+  background-color: #FFDBC9;
+}
+// 投稿画像を丸くしてる
+.cat-photo {
+  border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+  border: 5px solid #333;
+}
+// 投稿一覧の画像の余白
+.d-flex {
+  gap: 30px;
+}
