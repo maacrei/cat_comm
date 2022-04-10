@@ -1,24 +1,42 @@
 <div class="container">
-<h2><%= @user.name %>さまの詳細</h2>
-<table>
-  <tr>
-    <td>ユーザー名</td>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @user.email %></td>
-  </tr>
-  <tr>
-    <td>ステータス</td>
-      <% if @user.is_deleted == false %>
-      <td>会員</td>
-      <% else %>
-      <td>退会</td>
+  <div class="row">
+    <div class="col-3">
+      <h2><%= @user.name %>さまの詳細</h2>
+      <table>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td>ステータス</td>
+            <% if @user.is_deleted == false %>
+            <td>会員</td>
+            <% else %>
+            <td>退会</td>
+            <% end %>
+        </tr>
+        <tr>
+          <td><%= link_to "編集する", edit_admin_user_path, class: 'btn btn-md' %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-5">
+      <h3>投稿一覧</h3>
+      <% @post_images.each do |post_image| %>
+        <div>
+        <%= link_to post_image_path(post_image.id) do %>
+        <!--get_imageはmodelsに定義-->
+          <%= image_tag post_image.get_image(100,100) %>
+        <% end %>
+        <!--お気に入り件数とコメント件数を表示-->
+        <p><%= post_image.title %> <i class="fas fa-heart" aria-hidden="true"></i><%= post_image.favorites.count %><br>
+           <%= post_image.post_comments.count %>コメント</p>
+        </div>
       <% end %>
-  </tr>
-  <tr>
-    <td><%= link_to "編集する", edit_admin_user_path, class: 'btn btn-md' %></td>
-  </tr>
-</table>
+    </div>
+  </div>
 </div>

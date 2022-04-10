@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     # post_imageをresoucesにしてないのでresouceが使えない
     delete 'post_images/:post_image_id/favorites' => 'favorites#destroy', as: 'post_image_destroy_favorites'
     post 'post_images/:post_image_id/favorites' => 'favorites#create', as: 'post_image_favorites'
+    delete 'post_images/:post_image_id/post_comments/:id' => 'post_comments#destroy', as: 'post_image_destroy_post_comments'
+    post 'post_images/:post_image_id/post_comments' => 'post_comments#create', as: 'post_image_post_comments'
   end
 
 end

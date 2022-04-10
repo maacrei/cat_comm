@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :post_images
   has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
   # ユーザー名は一意でないといけない
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true

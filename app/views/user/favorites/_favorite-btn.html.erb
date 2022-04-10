@@ -1,18 +1,20 @@
-    <!--お気に入り機能はユーザーのみで管理者は不要-->
-    <% if user_signed_in? %>
-      <% if post_image.favorited_by?(current_user) %>
-        <p>
-          <%= link_to post_image_destroy_favorites_path(post_image), class: "link", method: :delete do %>
-            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-          <% end %>
-          <%= post_image.favorites.count %>
-        </p>
-      <% else %>
-        <p>
-          <%= link_to post_image_favorites_path(post_image), class: "link", method: :post do %>
-            <i class="fas fa-heart" aria-hidden="true"></i>
-          <% end %>
-          <%= post_image.favorites.count %>
-        </p>
+<!--お気に入り機能はユーザーのみで管理者は閲覧のみ-->
+<% if user_signed_in? %>
+  <% if post_image.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_image_destroy_favorites_path(post_image), class: "link", method: :delete do %>
+        <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
       <% end %>
-    <% end %>
+      <%= post_image.favorites.count %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to post_image_favorites_path(post_image), class: "link", method: :post do %>
+        <i class="fas fa-heart" aria-hidden="true"></i>
+      <% end %>
+      <%= post_image.favorites.count %>
+    </p>
+  <% end %>
+<% elsif admin_signed_in? %>
+  <p><%= post_image.title %> <i class="fas fa-heart" aria-hidden="true"></i><%= post_image.favorites.count %></p>
+<% end %>
