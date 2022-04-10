@@ -6,7 +6,7 @@
       <p>メールアドレス<br><%= @user.email %></p>
       <%= link_to "会員情報変更", myedit_path, class: 'btn btn-md' %>
     </div>
-    <div class="col-6">
+    <div class="col-5">
       <h3>投稿一覧</h3>
       <% @post_images.each do |post_image| %>
       <div>
@@ -14,12 +14,22 @@
       <!--get_imageはmodelsに定義-->
         <%= image_tag post_image.get_image(100,100) %>
       <% end %>
-      <p><%= post_image.title %></p>
+      <p><%= post_image.title %> <i class="fas fa-heart" aria-hidden="true"></i><%= post_image.favorites.count %></p>
       </div>
       <% end %>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <h3>お気に入りリスト</h3>
+      <% if @favorite_list.present? %>
+        <% @favorite_list.each do |post_image| %>
+        <div>
+          <%= link_to post_image_path(post_image.id) do %>
+          <%= image_tag post_image.get_image(100,100) %>
+        <% end %>
+        <p><%= post_image.title %></p>
+        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -2,6 +2,9 @@ class User::UsersController < ApplicationController
   def show
     @user = current_user
     @post_images = @user.post_images
+    # お気に入りリストの表示
+    favorites = Favorite.where(user_id: current_user.id).pluck(:post_image_id)
+    @favorite_list = PostImage.find(favorites)
   end
 
   def edit

@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     delete 'cats/:id' => 'post_images#destroy', as: 'destroy_post_image'
     get 'unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw'
+    # post_imageをresoucesにしてないのでresouceが使えない
+    delete 'post_images/:post_image_id/favorites' => 'favorites#destroy', as: 'post_image_destroy_favorites'
+    post 'post_images/:post_image_id/favorites' => 'favorites#create', as: 'post_image_favorites'
   end
 
 end
