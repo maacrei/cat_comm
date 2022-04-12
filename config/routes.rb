@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :user do
+    get 'searches/search'
+  end
   # 管理者用 URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -40,6 +43,7 @@ Rails.application.routes.draw do
     post 'post_images/:post_image_id/favorites' => 'favorites#create', as: 'post_image_favorites'
     delete 'post_images/:post_image_id/post_comments/:id' => 'post_comments#destroy', as: 'post_image_destroy_post_comments'
     post 'post_images/:post_image_id/post_comments' => 'post_comments#create', as: 'post_image_post_comments'
+    get 'search' => 'searches#search'
   end
 
 end
