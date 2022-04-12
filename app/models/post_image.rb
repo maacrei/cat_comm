@@ -1,5 +1,8 @@
 class PostImage < ApplicationRecord
 
+  # ゲストユーザーは投稿できない
+  # before_action :ensure_guest_user, only: [:new]
+
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
@@ -20,6 +23,13 @@ class PostImage < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+
+  # def ensure_guest_user
+  #   @user = current_user
+  #   if @user.name == "guestuser"
+  #     redirect_to post_images_path
+  #   end
+  # end
 
 
 end

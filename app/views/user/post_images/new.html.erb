@@ -1,4 +1,8 @@
 <div class="container">
+  <% if @user.name == "guestuser" %>
+    <p>投稿するには会員登録が必要です。</p>
+    <p>ログアウトしてから会員登録をしてください。</p>
+  <% else %>
   <h2>投稿フォーム</h2>
     <%= form_with model: @post_image do |f| %>
       <table>
@@ -18,5 +22,6 @@
           <td><%= f.submit "投稿", class: 'btn btn-md' %></td>
         </tr>
       </table>
+    <% end %>
     <% end %>
 </div>
