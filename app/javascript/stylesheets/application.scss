@@ -22,9 +22,21 @@ footer {
 .d-flex {
   gap: 30px;
 }
-
 // リンクの色をデフォルトの青から変更
 .link {
     text-decoration: none;
     color: black ;
+}
+// カードの背景は透明
+.card {
+  background-color: transparent;
+}
+// カードのタイトル中央揃え
+.card-title {
+  margin-top: 30px;
+  text-align: center;
+}
+// カードテキストの下に余白
+.card-text {
+  padding-bottom: 20px;
 }

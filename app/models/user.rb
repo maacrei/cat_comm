@@ -11,4 +11,11 @@ class User < ApplicationRecord
   # ユーザー名は一意でないといけない
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
+  def self.guest
+    find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
 end

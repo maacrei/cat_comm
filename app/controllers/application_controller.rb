@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   # devise利用の機能が使われる前にconfizuere_permitted_parametersを実行する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # ログインしているかどうか（topページ・aboutページ・sign_inは除く）
+  before_action :authenticate_user_or_admin!, except: [:top, :about, :create]
+
   private
 
   def after_sign_in_path_for(resource_or_scope)
@@ -16,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :user
-      new_user_session_path
+      root_path
     elsif resource_or_scope == :admin
       new_admin_session_path
     else

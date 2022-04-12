@@ -1,8 +1,13 @@
-# frozen_string_literal: true
-
 class User::SessionsController < Devise::SessionsController
   before_action :user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
+
+  # ゲストログイン機能
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to post_images_path
+  end
 
   protected
 
