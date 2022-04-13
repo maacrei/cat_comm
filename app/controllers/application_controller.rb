@@ -1,30 +1,24 @@
 class ApplicationController < ActionController::Base
+  # deviseの複数権限
   devise_group :user_or_admin, contains: [:user, :admin]
-
-  # devise利用の機能が使われる前にconfizuere_permitted_parametersを実行する
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
   # ログインしているかどうか（topページ・aboutページ・sign_inは除く）
   before_action :authenticate_user_or_admin!, except: [:top, :about, :create]
+  # devise利用の機能が使われる前にconfizuere_permitted_parametersを実行する
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
 
   def after_sign_in_path_for(resource_or_scope)
-    if resource_or_scope.is_a?(Admin)
+    if resource_or_scope == :admin
       admin_users_path
     else
       post_images_path
     end
   end
 
-  def after_sign_out_path_for(resource_or_scope)
-    if resource_or_scope == :user
-      root_path
-    elsif resource_or_scope == :admin
-      new_admin_session_path
-    else
-  		root_path
-    end
+  # ログアウト後の遷移先はadminもuserもトップページ
+  def after_sign_out_path
+    root_path
   end
 
   protected

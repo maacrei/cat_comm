@@ -24,12 +24,8 @@ class PostImage < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  # def ensure_guest_user
-  #   @user = current_user
-  #   if @user.name == "guestuser"
-  #     redirect_to post_images_path
-  #   end
-  # end
-
+  def self.search_for(content)
+    PostImage.where('title LIKE ?', '%' + content + '%')
+  end
 
 end

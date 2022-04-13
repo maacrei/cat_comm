@@ -20,6 +20,9 @@
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
         </li>
+        <li class="nav_item">
+          <%= render 'layouts/user_search_form' %>
+        </li>
       <% elsif admin_signed_in? %>
         <li class="nav-item">
           <%= link_to "ユーザーリスト", admin_users_path, class: 'nav-link text-dark' %>
@@ -29,6 +32,9 @@
         </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+        </li>
+        <li class="nav_item">
+          <%= render 'layouts/user_search_form' %>
         </li>
       <% else %>
         <li class="nav-item">
