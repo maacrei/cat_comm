@@ -6,11 +6,17 @@
       </div>
       <div class="col-4">
         <h5>説明<br><%= @post_image.caption %></h5>
-        <h6>投稿者: <%= @post_image.user.name %>
-          <!--投稿ユーザーが退会していたら表示-->
-          <% if @post_image.user.is_deleted == true %>
-            （退会済みのユーザーです）
+        <% if admin_signed_in? %>
+          <%= link_to admin_user_path(@post_image.user) do %>
+          <h6>投稿者: <%= @post_image.user.name %>
           <% end %>
+        <% else %>
+          <h6>投稿者: <%= @post_image.user.name %>
+        <% end %>
+        <!--投稿ユーザーが退会していたら表示-->
+        <% if @post_image.user.is_deleted == true %>
+          （退会済みのユーザーです）
+        <% end %>
         </h6>
         <h6>投稿日: <%= @post_image.created_at.strftime('%Y/%m/%d') %></h6>
         <!--いいね機能-->

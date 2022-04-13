@@ -21,6 +21,8 @@ class User::PostImagesController < ApplicationController
   def show
     @post_image = PostImage.find(params[:id])
     @post_comment = PostComment.new
+    # @users = User.all
+    # @user = User.find(params[:id])
   end
 
   def edit

@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
 
-  namespace :user do
-    get 'searches/search'
-  end
   # 管理者用 URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
   namespace :admin do
+    get 'search' => 'searches#search'
     resources :users, only: [:index, :show, :edit, :update]
   end
 
