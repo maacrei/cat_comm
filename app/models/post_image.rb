@@ -4,14 +4,15 @@ class PostImage < ApplicationRecord
   # before_action :ensure_guest_user, only: [:new]
 
   belongs_to :user
+  belongs_to :genre
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
   has_one_attached :image
 
+  validates :image, presence: true
   validates :title, presence: true
   validates :caption, presence: true
-  validates :image, presence: true
 
   # 投稿画像
   def get_image(width,height)
@@ -26,6 +27,10 @@ class PostImage < ApplicationRecord
 
   def self.search_for(content)
     PostImage.where('title LIKE ?', '%' + content + '%')
+  end
+
+  def self.search(search_word)
+    PostImage.where(['genre.name LIKE ?', "#{search_word}"])
   end
 
 end

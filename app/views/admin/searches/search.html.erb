@@ -1,9 +1,1 @@
-<div class="container">
-  <% if @model == 'user' %>
-    <h2>ユーザー名 "<%= @content %>" さまの検索結果</h2>
-    <%= render 'admin/users/index', users: @records %>
-  <% elsif @model == 'post_image' %>
-    <h2>タイトル "<%= @content %>" の検索結果</h2>
-    <%= render 'user/post_images/index', post_images: @records %>
-  <% end %>
-</div>
+<%= render 'layouts/keyword_search', model: @model, content: @content, records: @records %>

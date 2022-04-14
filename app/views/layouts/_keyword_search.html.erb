@@ -1,0 +1,12 @@
+<div class="container">
+  <% if model == 'user' %>
+    <h2>ユーザー名 "<%= content %>" さまの検索結果</h2>
+    <%= render 'user/post_images/index', post_images: records %>
+  <% elsif model == 'post_image' %>
+    <h2>タイトル "<%= content %>" の検索結果</h2>
+    <%= render 'user/post_images/index', post_images: records %>
+  <% elsif model == 'genre' %>
+    <h2>猫の種類 "<%= content %>" の検索結果</h2>
+    <%= render 'user/post_images/index', post_images: records %>
+  <% end %>
+</div>

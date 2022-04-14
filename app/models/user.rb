@@ -21,11 +21,7 @@ class User < ApplicationRecord
 
   # 投稿ユーザー名で検索して、そのユーザーの投稿を一覧表示する
   def self.search_for(content)
-    # if user_signed_in?
       PostImage.joins(:user).where('name LIKE ?', '%' + content + '%')
-    # elsif admin_signed_in?
-      # User.where('name LIKE ?', '%' + content + '%')
-    # end
   end
 
 end
