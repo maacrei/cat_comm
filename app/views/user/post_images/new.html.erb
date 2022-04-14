@@ -1,5 +1,8 @@
 <div class="container">
-  <% if @user.name == "guestuser" %>
+  <!--エラーメッセージ-->
+  <%= render 'layouts/error_messages', obj: @post_image %>
+  <% if current_user.name == "guestuser" %>
+  <!--@user.nameから上記に変更-->
     <p>投稿するには会員登録が必要です。</p>
     <p>ログアウトしてから会員登録をしてください。</p>
   <% else %>
@@ -12,16 +15,20 @@
         </tr>
         <tr>
           <td><%= f.label :title, "タイトル" %></td>
-          <td><%= f.text_field :title %></td>
+          <td><%= f.text_field :title, class: "form-control" %></td>
         </tr>
         <tr>
           <td><%= f.label :caption, "説明" %></td>
-          <td><%= f.text_area :caption %></td>
+          <td><%= f.text_area :caption, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :genre_id, "ジャンル" %></td>
+          <td><%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--猫種を選択してください--"}, {class: "form-control"}) %></td>
         </tr>
         <tr>
           <td><%= f.submit "投稿", class: 'btn btn-md' %></td>
         </tr>
       </table>
     <% end %>
-    <% end %>
+  <% end %>
 </div>

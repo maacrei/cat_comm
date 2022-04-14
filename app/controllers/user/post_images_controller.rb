@@ -2,6 +2,7 @@ class User::PostImagesController < ApplicationController
   def new
     @post_image = PostImage.new
     @user = current_user
+    @genres = Genre.all
   end
 
   def create
@@ -10,6 +11,7 @@ class User::PostImagesController < ApplicationController
     if @post_image.save
       redirect_to post_images_path
     else
+      @genres = Genre.all
       render :new
     end
   end
@@ -21,8 +23,6 @@ class User::PostImagesController < ApplicationController
   def show
     @post_image = PostImage.find(params[:id])
     @post_comment = PostComment.new
-    # @users = User.all
-    # @user = User.find(params[:id])
   end
 
   def edit
@@ -37,10 +37,15 @@ class User::PostImagesController < ApplicationController
     redirect_to post_images_path
   end
 
+  def search_genre
+    @post_image = PostImage.new
+    @post_images = PostImage.search(params[:keyword])
+  end
+
   private
 
   def post_image_params
-    params.require(:post_image).permit(:image, :title , :caption)
+    params.require(:post_image).permit(:image, :title , :caption, :genre_id)
   end
 
 end

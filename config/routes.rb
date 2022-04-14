@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # get 'search' => 'searches#keyword_search'
+
   # 管理者用 URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -42,6 +44,7 @@ Rails.application.routes.draw do
     delete 'post_images/:post_image_id/post_comments/:id' => 'post_comments#destroy', as: 'post_image_destroy_post_comments'
     post 'post_images/:post_image_id/post_comments' => 'post_comments#create', as: 'post_image_post_comments'
     get 'search' => 'searches#search'
+    get 'search_genre' => 'post_images#search_genre'
   end
 
 end
