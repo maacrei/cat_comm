@@ -11,7 +11,7 @@
           <p>タイトル:<%= post_image.title %></p>
           <p>#<%= post_image.genre.name %></p>
           <!--いいね機能-->
-          <%= render 'user/favorites/favorite-btn', post_image: post_image %>
+          <%= render 'user/favorites/favorites', post_image: post_image %>
         </div>
       <% end %>
     </div>

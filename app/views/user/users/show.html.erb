@@ -9,6 +9,7 @@
       </div>
       <div class="col-5">
         <h3>投稿一覧</h3>
+          <div class="d-flex flex-wrap" style="align-items: baseline;">
           <% @post_images.each do |post_image| %>
           <div>
             <%= link_to post_image_path(post_image.id) do %>
@@ -16,14 +17,17 @@
               <%= image_tag post_image.get_image(100,100) %>
             <% end %>
             <!--お気に入り件数とコメント件数を表示-->
-            <p><%= post_image.title %> <i class="fas fa-heart" aria-hidden="true"></i><%= post_image.favorites.count %><br>
-               <%= post_image.post_comments.count %>コメント</p>
+            <p><%= post_image.title %><br>
+              <i class="fas fa-solid fa-fish" aria-hidden="true"></i><%= post_image.favorites.count %><br>
+              <%= post_image.post_comments.count %>コメント</p>
           </div>
           <% end %>
+          </div>
       </div>
       <div class="col-4">
         <h3>お気に入りリスト</h3>
           <% if @favorite_list.present? %>
+            <div class="d-flex flex-wrap" style="align-items: baseline;">
             <% @favorite_list.each do |post_image| %>
             <div>
               <%= link_to post_image_path(post_image.id) do %>
@@ -33,6 +37,7 @@
             </div>
             <% end %>
           <% end %>
+          </div>
       </div>
     </div>
   <% else %>

@@ -7,7 +7,8 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images
+    # .order(created_at: :desc)で投稿を新着順に表示
+    @post_images = @user.post_images.order(created_at: :desc)
   end
 
   def edit

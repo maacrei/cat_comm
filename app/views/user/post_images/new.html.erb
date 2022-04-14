@@ -1,34 +1,47 @@
 <div class="container">
-  <!--エラーメッセージ-->
-  <%= render 'layouts/error_messages', obj: @post_image %>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-1"></div>
+
   <% if current_user.name == "guestuser" %>
   <!--@user.nameから上記に変更-->
     <p>投稿するには会員登録が必要です。</p>
     <p>ログアウトしてから会員登録をしてください。</p>
   <% else %>
+
+      <div class="col-4">
   <h2>投稿フォーム</h2>
+    <!--エラーメッセージ-->
+    <%= render 'layouts/error_messages', obj: @post_image %>
     <%= form_with model: @post_image do |f| %>
-      <table>
-        <tr>
-          <td><%= f.label :image, "写真" %></td>
-          <td><%= f.file_field :image, accept: "image/*" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :title, "タイトル" %></td>
-          <td><%= f.text_field :title, class: "form-control" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :caption, "説明" %></td>
-          <td><%= f.text_area :caption, class: "form-control" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :genre_id, "ジャンル" %></td>
-          <td><%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--猫種を選択してください--"}, {class: "form-control"}) %></td>
-        </tr>
-        <tr>
-          <td><%= f.submit "投稿", class: 'btn btn-md' %></td>
-        </tr>
-      </table>
+
+      <div class="field">
+        <%= f.label :image, "写真" %><br>
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :title, "タイトル" %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :caption, "内容" %><br>
+        <%= f.text_area :caption, rows: '5', class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :genre_id, "ジャンル" %><br>
+        <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--猫種を選択してください--"}, {class: "form-control"}) %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "投稿", class: 'btn btn-md' %>
+      </div>
     <% end %>
   <% end %>
+
+      </div>
+    <div class="col-4"></div>
+  </div>
 </div>

@@ -1,20 +1,11 @@
-<!--お気に入り機能はユーザーのみで管理者とゲストユーザーは閲覧のみ-->
-<% if admin_signed_in? || current_user.name == "guestuser" %>
-  <p><i class="fas fa-heart" aria-hidden="true"></i><%= post_image.favorites.count %></p>
-<% elsif user_signed_in? %>
-  <% if post_image.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_image_destroy_favorites_path(post_image), class: "link", method: :delete do %>
-        <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-      <% end %>
-      <%= post_image.favorites.count %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to post_image_favorites_path(post_image), class: "link", method: :post do %>
-        <i class="fas fa-heart" aria-hidden="true"></i>
-      <% end %>
-      <%= post_image.favorites.count %>
-    </p>
+<% if post_image.favorited_by?(current_user) %>
+  <%= link_to post_image_destroy_favorites_path(post_image), class: "link", method: :delete do %>
+    <i class="fas fa-solid fa-fish" aria-hidden="true" style="color: #FF0461;"></i>
   <% end %>
+  <%= post_image.favorites.count %>
+<% else %>
+  <%= link_to post_image_favorites_path(post_image), class: "link", method: :post do %>
+    <i class="fas fa-solid fa-fish" aria-hidden="true"></i>
+  <% end %>
+  <%= post_image.favorites.count %>
 <% end %>
