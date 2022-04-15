@@ -1,20 +1,27 @@
 class User::PostCommentsController < ApplicationController
 
   def create
-    post_image = PostImage.find(params[:post_image_id])
+    @post_image = PostImage.find(params[:post_image_id])
     # comment = current_user.post_comments.new(post_comment_params) 下の２行を略した記述方法
     comment = PostComment.new(post_comment_params)
     comment.user_id = current_user.id
-    comment.post_image_id = post_image.id
+    comment.post_image_id = @post_image.id
     comment.save
-    redirect_to post_image_path(post_image)
+    # if comment.save
+      # redirect_to post_image_path(post_image)
+      # render 'user/post_comments/index'
+    # else
+      # redirect_back fallback_location: root_path
+    # end
   end
 
   def destroy
     PostComment.find(params[:id]).destroy
+    @post_image = PostImage.find(params[:post_image_id])
+    # render :index
     # redirect_to post_image_path(post_image)だと失敗する
     # 直前のページにリダイレクト
-    redirect_back fallback_location: root_path
+    # redirect_back fallback_location: root_path
   end
 
   private

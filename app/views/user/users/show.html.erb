@@ -16,10 +16,8 @@
               <!--get_imageはmodelsに定義-->
               <%= image_tag post_image.get_image(100,100) %>
             <% end %>
-            <!--お気に入り件数とコメント件数を表示-->
-            <p><%= post_image.title %><br>
-              <i class="fas fa-solid fa-fish" aria-hidden="true"></i><%= post_image.favorites.count %><br>
-              <%= post_image.post_comments.count %>コメント</p>
+            <!--タイトルとコメント件数を表示-->
+            <p><%= post_image.title %><br><%= post_image.post_comments.count %>コメント</p>
           </div>
           <% end %>
           </div>

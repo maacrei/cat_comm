@@ -30,14 +30,18 @@
           <%= link_to "投稿を削除する", destroy_post_image_path(@post_image), method: :delete, data: {confirm: "本当に削除しますか？"} %>
         <% end %>
 
-        <!--エラーメッセージ表示されるか非同期通信化後に確認-->
-        <%= render 'layouts/error_messages', obj: @post_comment %>
-        <p>コメント件数：<%= @post_image.post_comments.count %></p>
         <% if admin_signed_in? || current_user.name == "guestuser" %>
+
           <%= render 'user/post_comments/index', post_image: @post_image, post_comment: @post_comment %>
         <% elsif user_signed_in? %>
-          <%= render 'user/post_comments/form', post_image: @post_image, post_comment: @post_comment %>
-          <%= render 'user/post_comments/index', post_image: @post_image, post_comment: @post_comment %>
+          <!--エラーメッセージ表示されるか非同期通信化後に確認-->
+          <%= render 'layouts/error_messages', obj: @post_comment %>
+          <div class="comment-form">
+            <%= render 'user/post_comments/form', post_image: @post_image, post_comment: @post_comment %>
+          </div>
+          <div class="comment-area">
+            <%= render 'user/post_comments/index', post_image: @post_image, post_comment: @post_comment %>
+          </div>
         <% end %>
 
       </div>

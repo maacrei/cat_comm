@@ -1,10 +1,17 @@
 @import "~bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap');
 
-// フッターを下部に固定
+// リセットCSS
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+// フッターを下部に固定 マイページがレスポンシブ対応になってない
 .position {
   position: relative;
-  padding-bottom: 70px;
+  padding-bottom: 80px;
   box-sizing: border-box;
   min-height: 100vh;
 }
