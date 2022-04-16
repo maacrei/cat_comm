@@ -18,7 +18,7 @@ class User::PostImagesController < ApplicationController
 
   def index
     # .order(created_at: :desc)で投稿を新着順に表示
-    @post_images = PostImage.order(created_at: :desc)
+    @post_images = PostImage.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -42,7 +42,7 @@ class User::PostImagesController < ApplicationController
   def search_genre
     @post_image = PostImage.new
     # .order(created_at: :desc)で投稿を新着順に表示
-    @post_images = PostImage.search(params[:keyword]).order(created_at: :desc)
+    @post_images = PostImage.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private

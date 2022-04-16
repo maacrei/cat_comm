@@ -31,7 +31,10 @@
         <% end %>
 
         <% if admin_signed_in? || current_user.name == "guestuser" %>
-          <%= render 'user/post_comments/index', post_image: @post_image, post_comment: @post_comment %>
+          <!--管理者のコメント削除を非同期通信にするためにclass名をcomment-areaにしてる-->
+          <div class="comment-area">
+            <%= render 'user/post_comments/index', post_image: @post_image, post_comment: @post_comment %>
+          </div>
         <% elsif user_signed_in? %>
           <div class="comment-form">
             <%= render 'user/post_comments/form', post_image: @post_image, post_comment: @post_comment %>

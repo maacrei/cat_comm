@@ -2,13 +2,13 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(20)
   end
 
   def show
     @user = User.find(params[:id])
     # .order(created_at: :desc)で投稿を新着順に表示
-    @post_images = @user.post_images.order(created_at: :desc)
+    @post_images = @user.post_images.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit
