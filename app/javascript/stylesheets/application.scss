@@ -1,24 +1,14 @@
 @import "~bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap');
 
-// リセットCSS
-// * {
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
-
-// フッターを下部に固定 マイページがレスポンシブ対応になってない
-.position {
+body {
+  background-color:#F5FFFA;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  // フッターを下部に固定
   position: relative;
   padding-bottom: 80px;
   box-sizing: border-box;
   min-height: 100vh;
-}
-
-body {
-  background-color:#F5FFFA;
-  font-family: 'Zen Maru Gothic', sans-serif;
 }
 
 header {
@@ -34,10 +24,11 @@ footer {
 }
 // 見出しの下に余白
 h2 {
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 // ボタンの色
 .btn {
+  margin-top: 5px;
   background-color: #FFDBC9;
 }
 
@@ -82,4 +73,21 @@ h2 {
 // 会員登録とログイン画面のボタンの余白上
 .actions {
   padding: 10px 0 10px 0;
+}
+
+.alert{
+  font-weight: bold;
+  color: red;
+  text-align: center;
+  padding-bottom: 5px;
+ }
+.notice{
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+// 新規会員登録のエラーメッセージ
+.devise-alert {
+  color: red;
 }

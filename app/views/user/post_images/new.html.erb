@@ -12,7 +12,12 @@
       <div class="col-4">
   <h2>投稿フォーム</h2>
     <!--エラーメッセージ-->
-    <%= render 'layouts/error_messages', obj: @post_image %>
+    <% if @post_image.errors.any? %>
+      <div class="alert">
+        <%= render 'layouts/error_messages', obj: @post_image %>
+      </div>
+    <% end %>
+
     <%= form_with model: @post_image do |f| %>
 
       <div class="field">

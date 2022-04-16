@@ -2,16 +2,18 @@ class User::PostCommentsController < ApplicationController
 
   def create
     @post_image = PostImage.find(params[:post_image_id])
-    # comment = current_user.post_comments.new(post_comment_params) 下の２行を略した記述方法
-    comment = PostComment.new(post_comment_params)
-    comment.user_id = current_user.id
-    comment.post_image_id = @post_image.id
-    comment.save
-    # if comment.save
-      # redirect_to post_image_path(post_image)
-      # render 'user/post_comments/index'
+    @post_comment = PostComment.new(post_comment_params)
+    @post_comment.user_id = current_user.id
+    @post_comment.post_image_id = @post_image.id
+    # 下記はエラーメッセージを非同期で表示させるための記述
+    # 表示はできたがメッセージがリダイレクトをしないと消えないので実装保留中
+    unless @post_comment.save
+      render 'error_messages'
+    end
+    # if @post_comment.save
+    #   render :create
     # else
-      # redirect_back fallback_location: root_path
+    #   render 'error_messages'
     # end
   end
 

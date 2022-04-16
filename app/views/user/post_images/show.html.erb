@@ -31,11 +31,8 @@
         <% end %>
 
         <% if admin_signed_in? || current_user.name == "guestuser" %>
-
           <%= render 'user/post_comments/index', post_image: @post_image, post_comment: @post_comment %>
         <% elsif user_signed_in? %>
-          <!--エラーメッセージ表示されるか非同期通信化後に確認-->
-          <%= render 'layouts/error_messages', obj: @post_comment %>
           <div class="comment-form">
             <%= render 'user/post_comments/form', post_image: @post_image, post_comment: @post_comment %>
           </div>

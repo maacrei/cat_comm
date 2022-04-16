@@ -25,7 +25,7 @@
       <div class="col-4">
         <h3>お気に入りリスト</h3>
           <% if @favorite_list.present? %>
-            <div class="d-flex flex-wrap" style="align-items: baseline;">
+          <div class="d-flex flex-wrap" style="align-items: baseline;">
             <% @favorite_list.each do |post_image| %>
             <div>
               <%= link_to post_image_path(post_image.id) do %>
