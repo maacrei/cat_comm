@@ -1,0 +1,46 @@
+<div class="container">
+  <% if current_user.name != "guestuser" %>
+  <h2>マイページ</h2>
+    <div class="row">
+      <div class="col-3">
+        <p>ユーザー名<br><%= @user.name %></p>
+        <p>メールアドレス<br><%= @user.email %></p>
+        <%= link_to "会員情報変更", myedit_path, class: 'btn btn-md' %>
+      </div>
+      <div class="col-5">
+        <h3>投稿一覧</h3>
+          <div class="d-flex flex-wrap" style="align-items: baseline;">
+          <% @post_images.each do |post_image| %>
+          <div>
+            <%= link_to post_image_path(post_image.id) do %>
+              <!--get_imageはmodelsに定義-->
+              <%= image_tag post_image.get_image(100,100) %>
+            <% end %>
+            <!--タイトルとコメント件数を表示-->
+            <p><%= post_image.title %><br><%= post_image.post_comments.count %>コメント</p>
+          </div>
+          <% end %>
+          </div>
+          <div class="pagenate"><%= paginate @post_images %></div>
+      </div>
+      <div class="col-4">
+        <h3>お気に入りリスト</h3>
+          <% if @favorite_list.present? %>
+          <div class="d-flex flex-wrap" style="align-items: baseline;">
+            <% @favorite_list.each do |post_image| %>
+            <div>
+              <%= link_to post_image_path(post_image.id) do %>
+              <%= image_tag post_image.get_image(100,100) %>
+              <% end %>
+              <p><%= post_image.title %></p>
+            </div>
+            <% end %>
+          <% end %>
+          </div>
+      </div>
+    </div>
+  <% else %>
+    <p>マイページ機能は会員でないとご利用できません。</p>
+    <p>ログアウトしてから会員登録をしてください。</p>
+  <% end %>
+</div>

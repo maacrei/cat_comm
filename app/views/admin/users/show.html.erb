@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <h2><%= @user.name %>さまの詳細</h2>
+    <div class="col-3">
+      <p>ユーザー名<br><%= @user.name %></p>
+      <p>メールアドレス<br><%= @user.email %></p>
+      <p>
+        ステータス
+        <% if @user.is_deleted == false %><br>
+          会員
+        <% else %><br>
+          退会
+        <% end %>
+      </p>
+      <%= link_to "編集する", edit_admin_user_path, class: 'btn btn-md' %>
+    </div>
+    <div class="col-5">
+      <h3>投稿一覧</h3>
+      <div class="d-flex flex-wrap" style="align-items: baseline;">
+      <% @post_images.each do |post_image| %>
+        <div>
+        <%= link_to post_image_path(post_image.id) do %>
+        <!--get_imageはmodelsに定義-->
+          <%= image_tag post_image.get_image(100,100) %>
+        <% end %>
+        <!--お気に入り件数とコメント件数を表示-->
+        <p><%= post_image.title %><br>
+          <i class="fas fa-solid fa-fish" aria-hidden="true"></i><%= post_image.favorites.count %><br>
+          <%= post_image.post_comments.count %>コメント
+        </p>
+        </div>
+      <% end %>
+    </div>
+    <%= paginate @post_images %>
+  </div>
+</div>

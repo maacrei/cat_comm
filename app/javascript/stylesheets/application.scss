@@ -1,24 +1,105 @@
 @import "~bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap');
 
 body {
-  background-color:#F5FFFA;
+  background-color:#f5fffa;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  // フッターを下部に固定
+  position: relative;
+  padding-bottom: 80px;
+  box-sizing: border-box;
+  min-height: 100vh;
 }
+
 header {
-  background-color:#CEF9DC;
+  background-color:#8fbc8f;
+  margin-bottom: 40px;
 }
+
 footer {
-  background-color:#CEF9DC;
+  background-color:#8fbc8f;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+// 見出しの下に余白
+h2 {
+  padding-bottom: 15px;
 }
 // ボタンの色
 .btn {
-  background-color: #FFDBC9;
+  margin-top: 5px;
+  background-color: #8fbc8f;
 }
+
 // 投稿画像を丸くしてる
 .cat-photo {
   border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
   border: 5px solid #333;
 }
+
 // 投稿一覧の画像の余白
 .d-flex {
   gap: 30px;
+}
+
+// リンクの色をデフォルトの青から変更
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+// カードの背景は透明
+.card {
+  background-color: transparent;
+}
+
+// カードのタイトル中央揃え
+.card-title {
+  margin-top: 30px;
+  text-align: center;
+}
+
+// カードテキストの下に余白
+.card-text {
+  padding-bottom: 20px;
+}
+
+// 会員登録とログイン画面の入力フィールドの余白上
+.field {
+  padding-top: 5px;
+}
+
+// 会員登録とログイン画面のボタンの余白上
+.actions {
+  padding: 10px 0 10px 0;
+}
+
+.alert{
+  font-weight: bold;
+  color: red;
+  text-align: center;
+  padding-bottom: 5px;
+ }
+.notice{
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+// 新規会員登録のエラーメッセージ
+.devise-alert {
+  color: red;
+}
+
+.pagenate {
+  padding-top: 30px;
+}
+
+.search-form {
+  margin-left: 50px;
+}
+// ヘッダーのnavを右に寄せたかった
+.collapse {
+  text-align: right;
 }
