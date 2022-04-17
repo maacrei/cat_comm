@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      post_image:
+        genre: 猫種
+        title: タイトル
+        image: 写真
+        caption: 投稿内容

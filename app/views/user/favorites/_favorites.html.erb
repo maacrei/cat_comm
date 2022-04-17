@@ -1,0 +1,6 @@
+<!--お気に入り機能はユーザーのみで管理者とゲストユーザーは閲覧のみ-->
+<% if admin_signed_in? || current_user.name == "guestuser" %>
+  <i class="fas fa-solid fa-fish" aria-hidden="true"></i><%= post_image.favorites.count %>
+<% elsif user_signed_in? %>
+  <div id="favorite-btn_<%= post_image.id %>"><%= render 'user/favorites/favorite-btn', post_image: post_image %></div>
+<% end %>
