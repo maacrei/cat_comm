@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap');
 
 body {
-  background-color:#F5FFFA;
+  background-color:#f5fffa;
   font-family: 'Zen Maru Gothic', sans-serif;
   // フッターを下部に固定
   position: relative;
@@ -12,12 +12,12 @@ body {
 }
 
 header {
-  background-color:#CEF9DC;
+  background-color:#8fbc8f;
   margin-bottom: 40px;
 }
 
 footer {
-  background-color:#CEF9DC;
+  background-color:#8fbc8f;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -29,7 +29,7 @@ h2 {
 // ボタンの色
 .btn {
   margin-top: 5px;
-  background-color: #FFDBC9;
+  background-color: #8fbc8f;
 }
 
 // 投稿画像を丸くしてる
@@ -46,7 +46,7 @@ h2 {
 // リンクの色をデフォルトの青から変更
 .link {
     text-decoration: none;
-    color: black ;
+    color: black;
 }
 
 // カードの背景は透明
@@ -90,4 +90,16 @@ h2 {
 // 新規会員登録のエラーメッセージ
 .devise-alert {
   color: red;
+}
+
+.pagenate {
+  padding-top: 30px;
+}
+
+.search-form {
+  margin-left: 50px;
+}
+// ヘッダーのnavを右に寄せたかった
+.collapse {
+  text-align: right;
 }

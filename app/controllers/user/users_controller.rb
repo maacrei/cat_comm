@@ -7,7 +7,7 @@ class User::UsersController < ApplicationController
   def show
     @user = current_user
     # .order(created_at: :desc)で投稿を新着順に
-    @post_images = @user.post_images.order(created_at: :desc).page(params[:page]).per(10)
+    @post_images = @user.post_images.order(created_at: :desc).page(params[:page]).per(12)
     # お気に入りリストの表示
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_image_id)
     @favorite_list = PostImage.find(favorites)

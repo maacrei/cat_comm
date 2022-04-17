@@ -8,7 +8,7 @@
         <div>
           <%= link_to post_image_path(post_image.id) do %>
           <!--get_imageはmodelsに定義-->
-          <%= image_tag post_image.get_image(300,300), class: "cat-photo" %>
+          <%= image_tag post_image.get_image(260,260), class: "cat-photo" %>
           <% end %>
           <p>タイトル:<%= post_image.title %></p>
           <p>#<%= post_image.genre.name %></p>
@@ -18,7 +18,7 @@
       <% end %>
 
     </div>
-    <%= paginate post_images %>
+    <div class="pagenate"><%= paginate post_images %></div>
     </div>
   </div>
 </div>
