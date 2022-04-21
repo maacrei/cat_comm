@@ -1,6 +1,5 @@
 class User::SessionsController < Devise::SessionsController
   before_action :user_state, only: [:create]
-  # before_action :configure_sign_in_params, only: [:create]
 
   # ゲストログイン機能
   def guest_sign_in

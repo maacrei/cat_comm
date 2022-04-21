@@ -1,23 +1,35 @@
 <div class="container">
   <div class="row">
     <div class="col-2"></div>
-    <div class="card col-2">
-      <div class="card-title"><%= link_to 'ゲストログイン', user_guest_sign_in_path, method: :post, class: 'link' %></div>
-      <div><%= image_tag 'guestuser.png', class: "card-img-top" %></div>
-      <div class="card-text">投稿の閲覧のみ可能です。</div>
-    </div>
+      <div class="card col-2">
+        <div class="card-title fw-bold">
+          <%= link_to user_guest_sign_in_path, method: :post, class: "link" do %>
+            ゲストログイン
+            <%= image_tag "guestuser.png", class: "card-img-top" %>
+          <% end %>
+        </div>
+        <div class="card-text">投稿の閲覧のみ可能です。</div>
+      </div>
     <div class="col-1"></div>
-    <div class="card col-2">
-      <div class="card-title"><%= link_to "ログイン", new_user_session_path, class: 'link' %></div>
-      <div><%= image_tag 'user.png', class: "card-img-top" %></div>
-      <div class="card-text">会員登録がお済みの方はこちらから。</div>
-    </div>
+      <div class="card col-2">
+        <div class="card-title fw-bold">
+          <%= link_to new_user_session_path, class: "link" do %>
+            ログイン
+            <%= image_tag "user.png", class: "card-img-top" %>
+          <% end %>
+        </div>
+        <div class="card-text">会員登録がお済みの方はこちらから。</div>
+      </div>
     <div class="col-1"></div>
-    <div class="card col-2">
-      <div class="card-title"><%= link_to "会員登録", new_user_registration_path, class: 'link' %></div>
-      <div><%= image_tag 'newuser.png', class: "card-img-top" %></div>
-      <div class="card-text">会員登録をすると投稿機能、お気に入り機能、コメント機能がご利用できます。</div>
-    </div>
+      <div class="card col-2">
+        <div class="card-title fw-bold">
+          <%= link_to new_user_registration_path, class: "link" do %>
+            会員登録
+            <%= image_tag "newuser.png", class: "card-img-top" %>
+          <% end %>
+        </div>
+        <div class="card-text">会員登録をすると投稿機能、お気に入り機能、コメント機能がご利用できます。</div>
+      </div>
     <div class="col-2"></div>
   </div>
 </div>

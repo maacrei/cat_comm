@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap');
 
 body {
-  background-color:#f5fffa;
+  background-color: #f5fffa;
   font-family: 'Zen Maru Gothic', sans-serif;
   // フッターを下部に固定
   position: relative;
@@ -26,10 +26,27 @@ footer {
 h2 {
   padding-bottom: 15px;
 }
+
+h3 {
+  padding-bottom: 15px;
+}
+
+// リストの・を消す
+ul {
+  list-style: none;
+}
+
 // ボタンの色
 .btn {
   margin-top: 5px;
   background-color: #8fbc8f;
+}
+
+// 投稿一覧のレイアウト
+.d-flex {
+  gap: 40px;
+  align-items: baseline;
+  text-align: center;
 }
 
 // 投稿画像を丸くしてる
@@ -38,15 +55,18 @@ h2 {
   border: 5px solid #333;
 }
 
-// 投稿一覧の画像の余白
-.d-flex {
-  gap: 30px;
+.photo-hover img {
+	transition: 0.5s;
+}
+
+.photo-hover img:hover {
+	transform: scale(0.9, 0.9);
 }
 
 // リンクの色をデフォルトの青から変更
 .link {
     text-decoration: none;
-    color: black;
+    color: #008000;
 }
 
 // カードの背景は透明
@@ -81,6 +101,7 @@ h2 {
   text-align: center;
   padding-bottom: 5px;
  }
+
 .notice{
   font-weight: bold;
   text-align: center;
@@ -92,14 +113,34 @@ h2 {
   color: red;
 }
 
-.pagenate {
-  padding-top: 30px;
+// paginationクラスは自動で適用される
+.pagination {
+  padding: 30px 0 30px 0;
+  justify-content: center;
 }
 
 .search-form {
   margin-left: 50px;
 }
-// ヘッダーのnavを右に寄せたかった
-.collapse {
+
+.navbar-nav {
   text-align: right;
+}
+
+.photo-list {
+    position: relative;
+    padding: 0.5em 1em;
+    border: solid 2px;
+    border-radius: 8px;
+}
+.photo-list .list-title {
+    position: absolute;
+    display: inline-block;
+    top: -15px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    background-color: #f5fffa;
+    // color: #95ccff;
+    font-weight: bold;
 }

@@ -2,15 +2,15 @@
   <h2><%= @post_image.title %></h2>
     <div class="row">
       <div class="col-8">
-        <%= image_tag @post_image.get_image(800,800), class: "img-fluid" %>
+        <%= image_tag @post_image.get_image(800,800), class: "cat-photo img-fluid mx-auto d-block" %>
       </div>
       <div class="col-4">
-        <h5>説明<br><%= @post_image.caption %></h5>
-        <!--ジャンル（猫の種類）-->
+        <h4 class="mb-2"><%= @post_image.caption %></h4>
         <h6>＃<%= @post_image.genre.name %></h6>
+        <!--ログインしているのが管理者だったらユーザー名からユーザー詳細を開ける-->
         <% if admin_signed_in? %>
           <h6>投稿者:
-            <%= link_to admin_user_path(@post_image.user) do %>
+            <%= link_to admin_user_path(@post_image.user), class: "link" do %>
               <%= @post_image.user.name %>
             <% end %>
           </h6>
@@ -21,29 +21,26 @@
         <% if @post_image.user.is_deleted == true %>
           <h6>（退会済みのユーザーです）</h6>
         <% end %>
-
-        <h6>投稿日: <%= @post_image.created_at.strftime('%Y/%m/%d') %></h6>
-        <!--いいね機能-->
-        <%= render 'user/favorites/favorites', post_image: @post_image %><br>
+        <!--投稿日とお気に入りボタン-->
+        <h6>投稿日: <%= @post_image.created_at.strftime("%Y/%m/%d") %></h6>
+        <div class="mb-3"><%= render "user/favorites/favorites", post_image: @post_image %></div>
         <!--ログインしているのが投稿ユーザーもしくは管理者の場合は削除ボタン表示-->
         <% if @post_image.user == current_user || admin_signed_in? %>
-          <%= link_to "投稿を削除する", destroy_post_image_path(@post_image), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+          <%= link_to "投稿を削除する", destroy_post_image_path(@post_image), method: :delete, class: "link", data: {confirm: "本当に削除しますか？"} %>
         <% end %>
-
+        <!--ログインしているのが管理者かゲストユーザーだったらコメント送信はできない-->
         <% if admin_signed_in? || current_user.name == "guestuser" %>
-          <!--管理者のコメント削除を非同期通信にするためにclass名をcomment-areaにしてる-->
           <div class="comment-area">
-            <%= render 'user/post_comments/index', post_image: @post_image, post_comment: @post_comment %>
+            <%= render "user/post_comments/index", post_image: @post_image, post_comment: @post_comment %>
           </div>
         <% elsif user_signed_in? %>
-          <div class="comment-form">
-            <%= render 'user/post_comments/form', post_image: @post_image, post_comment: @post_comment %>
+          <div class="comment-form mt-3">
+            <%= render "user/post_comments/form", post_image: @post_image, post_comment: @post_comment %>
           </div>
           <div class="comment-area">
-            <%= render 'user/post_comments/index', post_image: @post_image, post_comment: @post_comment %>
+            <%= render "user/post_comments/index", post_image: @post_image, post_comment: @post_comment %>
           </div>
         <% end %>
-
       </div>
     </div>
 </div>

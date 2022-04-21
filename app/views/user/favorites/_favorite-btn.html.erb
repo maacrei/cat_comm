@@ -1,11 +1,11 @@
 <% if post_image.favorited_by?(current_user) %>
   <%= link_to post_image_destroy_favorites_path(post_image), class: "link", method: :delete, remote: true do %>
-    <i class="fas fa-solid fa-fish" aria-hidden="true" style="color: #FF0461;"></i>
+    <i class="fas fa-solid fa-fish" aria-hidden="true" style="color: #1e90ff;"></i>
   <% end %>
   <%= post_image.favorites.count %>
 <% else %>
   <%= link_to post_image_favorites_path(post_image), class: "link", method: :post, remote: true do %>
-    <i class="fas fa-solid fa-fish" aria-hidden="true"></i>
+    <i class="fas fa-solid fa-fish" aria-hidden="true" style="color: #a9a9a9;"></i>
   <% end %>
   <%= post_image.favorites.count %>
 <% end %>

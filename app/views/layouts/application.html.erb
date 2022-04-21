@@ -8,21 +8,22 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <!--<body class="d-flex flex-column vh-100">-->
   <body>
-    <div class="position">
-    <header class="shadow-sm">
-      <%= render 'layouts/header' %>
+    <header>
+      <%= render "layouts/header" %>
+      <div class="log-in pe-3 pb-1" style="text-align: right;">
+        <% if admin_signed_in? || user_signed_in? %>
+          ログイン中
+        <% end %>
+      </div>
     </header>
-    <main class="my-3">
+    <main class="mt-3 mb-5">
       <div class="notice"><%= notice %></div>
       <div class="alert"><%= alert %></div>
     <%= yield %>
     </main>
     <footer>
-      <%= render 'layouts/footer' %>
+      <%= render "layouts/footer" %>
     </footer>
-    </div>
   </body>
 </html>

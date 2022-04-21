@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  # get 'search' => 'searches#keyword_search'
-
   # 管理者用 URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -38,7 +36,6 @@ Rails.application.routes.draw do
     delete 'cats/:id' => 'post_images#destroy', as: 'destroy_post_image'
     get 'unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw'
-    # post_imageをresoucesにしてないのでresouceが使えない
     delete 'post_images/:post_image_id/favorites' => 'favorites#destroy', as: 'post_image_destroy_favorites'
     post 'post_images/:post_image_id/favorites' => 'favorites#create', as: 'post_image_favorites'
     delete 'post_images/:post_image_id/post_comments/:id' => 'post_comments#destroy', as: 'post_image_destroy_post_comments'
