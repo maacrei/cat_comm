@@ -1,7 +1,7 @@
 <div class="search-form">
   <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :content %><br>
-    <%= f.select :model, options_for_select({"ユーザー"=>"user", "投稿タイトル"=>"post_image", "猫の種類"=>"genre"}) %>
-    <%= f.submit "検索" %>
+    <%= f.text_field :content %>
+    <%= f.select :model, options_for_select({"ユーザー"=>"user", "投稿タイトル"=>"post_image", "ねこの種類"=>"genre"}) %>
+    <%= f.submit "検索", class: "btn btn-outline-light mb-2", style: "background-color: #8fbc8f; color: black;" %>
   <% end %>
 </div>

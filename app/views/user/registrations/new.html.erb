@@ -3,7 +3,7 @@
     <div class="col-4"></div>
       <div class="col-4">
         <h2>会員登録</h2>
-        <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
+        <%= form_with model: @user, url: user_registration_path, id: "new_user", class: "new_user" do |f| %>
           <% if @user.errors.any? %>
             <div class="devise-alert">
               <%= render "user/shared/error_messages", resource: resource %>
@@ -29,7 +29,7 @@
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
           </div>
           <div class="actions">
-            <%= f.submit "登録" %>
+            <%= f.submit "登録", class: "btn btn-md mb-3" %>
           </div>
         <% end %>
         <%= render "user/shared/links" %>

@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   # ゲストユーザーの名前とメールアドレスとパスワードは自動作成
   def self.guest
-    find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |user|
+    find_or_create_by!(name: "guestuser", email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   # 投稿ユーザー名で検索して、そのユーザーの投稿を一覧表示する
   def self.search_for(content)
-      PostImage.joins(:user).where('name LIKE ?', '%' + content + '%')
+      PostImage.joins(:user).where("name LIKE ?", "%" + content + "%")
   end
 
 end

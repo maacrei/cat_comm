@@ -1,8 +1,5 @@
 class PostImage < ApplicationRecord
 
-  # ゲストユーザーは投稿できない
-  # before_action :ensure_guest_user, only: [:new]
-
   belongs_to :user
   belongs_to :genre
   has_many :favorites, dependent: :destroy
@@ -11,8 +8,8 @@ class PostImage < ApplicationRecord
   has_one_attached :image
 
   validates :image, presence: true
-  validates :title, presence: true
-  validates :caption, presence: true
+  validates :title, presence: true, length: {maximum: 20}
+  validates :caption, presence: true, length: {maximum: 200}
 
   # 投稿画像
   def get_image(width,height)
@@ -26,11 +23,11 @@ class PostImage < ApplicationRecord
   end
 
   def self.search_for(content)
-    PostImage.where('title LIKE ?', '%' + content + '%')
+    PostImage.where("title LIKE ?", "%" + content + "%")
   end
 
   def self.search(search_word)
-    PostImage.where(['genre.name LIKE ?', "#{search_word}"])
+    PostImage.where(["genre.name LIKE ?", "#{search_word}"])
   end
 
 end

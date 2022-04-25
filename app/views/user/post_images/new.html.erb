@@ -1,52 +1,44 @@
 <div class="container">
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-1"></div>
-
-  <% if current_user.name == "guestuser" %>
-  <!--@user.nameから上記に変更-->
-    <p>投稿するには会員登録が必要です。</p>
-    <p>ログアウトしてから会員登録をしてください。</p>
-  <% else %>
-
-      <div class="col-4">
-  <h2>投稿フォーム</h2>
-    <!--エラーメッセージ-->
-    <% if @post_image.errors.any? %>
-      <div class="alert">
-        <%= render 'layouts/error_messages', obj: @post_image %>
+    <div class="col-4"></div>
+    <% if current_user.name == "guestuser" %>
+      <p>投稿するには会員登録が必要です。</p>
+      <p>ログアウトしてから会員登録をしてください。</p>
+    <% else %>
+    <div class="col-4">
+      <div class="ribbon">
+        <h2>投稿フォーム</h2>
       </div>
+      <!--エラーメッセージ-->
+      <% if @post_image.errors.any? %>
+        <div class="alert">
+          <%= render "layouts/error_messages", obj: @post_image %>
+        </div>
+      <% end %>
+      <!--投稿フォーム-->
+      <%= form_with model: @post_image, url: cats_path, local: true do |f| %>
+        <div class="field">
+          <%= f.label :image, "写真" %><br>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+        <div class="field">
+          <%= f.label :title, "タイトル（20文字まで）" %><br>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :caption, "内容（200文字まで）" %><br>
+          <%= f.text_area :caption, rows: "5", class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :genre_id, "ジャンル" %><br>
+          <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "---ねこの種類を選択してください---"}, {class: "form-control"}) %>
+        </div>
+        <div class="actions">
+          <%= f.submit "投稿", class: "btn btn-md" %>
+        </div>
+      <% end %>
     <% end %>
-
-    <%= form_with model: @post_image do |f| %>
-
-      <div class="field">
-        <%= f.label :image, "写真" %><br>
-        <%= f.file_field :image, accept: "image/*" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :title, "タイトル" %><br>
-        <%= f.text_field :title, class: "form-control" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :caption, "内容" %><br>
-        <%= f.text_area :caption, rows: '5', class: "form-control" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :genre_id, "ジャンル" %><br>
-        <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--猫種を選択してください--"}, {class: "form-control"}) %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "投稿", class: 'btn btn-md' %>
-      </div>
-    <% end %>
-  <% end %>
-
-      </div>
+    </div>
     <div class="col-4"></div>
   </div>
 </div>
