@@ -2,7 +2,7 @@ ja:
   activerecord:
     attributes:
       post_image:
-        genre: 猫種
+        genre: ねこの種類
         title: タイトル
         image: 写真
         caption: 投稿内容

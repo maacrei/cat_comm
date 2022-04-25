@@ -17,15 +17,23 @@
 
 ### 主な利用シーン
 
-ねこのベストショットが撮れたので他の方に共有したい、ねこについての情報交換がしたい、とにかくねこの画像を見たいとき。
+ねこのベストショットが撮れたので誰かに共有したい、ねこについての情報交換がしたい、とにかくねこの画像を見たいとき。
+
+### 利用方法
+
+会員登録をしなくても、ゲストユーザーとしてサイトの閲覧が可能です。但し、写真の投稿・コメント機能・お気に入り機能はご利用できません。
+気軽に写真の閲覧のみをしたい方はゲストユーザーでログインして下さい。
+自身で写真を投稿したり、投稿写真にコメントをしたり、お気に入り機能をご利用したい方は会員登録をしていただくことですべての機能がご利用できるようになります。
 
 ## 設計書
 
-- 作成中
+- [ER図](https://drive.google.com/file/d/1G6NdAIeNX5BumhhmDyLiVuilIMUJw5CV/view?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1aYLIPCvAZ-2sDzYVAOXFpLyAAJDIx9ZuUhTeGN5qtu0/edit?usp=sharing)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1CNMJOotBI90Od2qEq7ufm-I_xYR-sJ2iJX11gh60E1I/edit?usp=sharing)
 
 ## 開発環境
 
-- OS：macOS Monterey(12.3)
+- OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
@@ -33,4 +41,4 @@
 
 ## 使用素材
 
-- 検討中
+- [Canva](https://www.canva.com/)

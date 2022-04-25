@@ -4,7 +4,7 @@ class Genre < ApplicationRecord
 
   # ジャンル名で検索して、そのジャンルの投稿を一覧表示する
   def self.search_for(content)
-      PostImage.joins(:genre).where('name LIKE ?', '%' + content + '%')
+      PostImage.joins(:genre).where("name LIKE ?", "%" + content + "%")
   end
 
 end
