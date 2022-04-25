@@ -31,8 +31,6 @@ Rails.application.routes.draw do
     post 'cats' => 'post_images#create'
     get 'cats' => 'post_images#index', as: 'post_images'
     get 'cats/:id' => 'post_images#show', as: 'post_image'
-    get 'cats/:id/edit' => 'post_images#edit', as: 'edit_post_image'
-    patch 'cats/:id' => 'post_images#update', as: 'update_post_image'
     delete 'cats/:id' => 'post_images#destroy', as: 'destroy_post_image'
     get 'unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw'

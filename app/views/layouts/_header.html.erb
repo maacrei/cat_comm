@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid pt-3">
-    <a class="navbar-brand p-1" href="/"><%= image_tag("logo.png") %></a>
+    <a class="navbar-brand p-1" href="/" data-bs-toggle="tooltip" title="トップページ"><%= image_tag("logo.png") %></a>
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                   aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav">
       <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "マイページ", mypage_path, class: "nav-link text-dark" %>

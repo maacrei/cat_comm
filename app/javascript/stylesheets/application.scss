@@ -22,6 +22,7 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
 // 見出しの下に余白
 h2 {
   padding-bottom: 15px;
@@ -39,7 +40,7 @@ ul {
 // ボタンの色
 .btn {
   margin-top: 5px;
-  background-color: #8fbc8f;
+  background-color: #a6d3c8;
 }
 
 // 投稿一覧のレイアウト
@@ -49,16 +50,18 @@ ul {
   text-align: center;
 }
 
-// 投稿画像を丸くしてる
+// 投稿画像の枠
 .cat-photo {
   border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
   border: 5px solid #333;
 }
 
+// 投稿一覧ページの画像
 .photo-hover img {
 	transition: 0.5s;
 }
 
+// 投稿一覧ページの画像
 .photo-hover img:hover {
 	transform: scale(0.9, 0.9);
 }
@@ -127,12 +130,19 @@ ul {
   text-align: right;
 }
 
+.nav-item {
+  padding-right: 10px;
+}
+
+// 投稿一覧とお気に入りリスト
 .photo-list {
     position: relative;
     padding: 0.5em 1em;
     border: solid 2px;
     border-radius: 8px;
 }
+
+// 投稿一覧とお気に入りリスト
 .photo-list .list-title {
     position: absolute;
     display: inline-block;
@@ -141,6 +151,73 @@ ul {
     padding: 0 9px;
     line-height: 1;
     background-color: #f5fffa;
-    // color: #95ccff;
     font-weight: bold;
+}
+
+// 見出しの装飾
+.ribbon {
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  padding: 7px 0;
+  margin-bottom: 30px;
+  font-size: 18px;
+  background-color: #a6d3c8;
+  color: black;
+  box-sizing: border-box;
+}
+
+.ribbon h2 {
+  margin: 0;
+  padding: 0 30px;
+  border-top: dashed 2px rgba(255, 255, 255, 0.5);
+  border-bottom: dashed 2px rgba(255, 255, 255, 0.5);
+  line-height: 42px;
+}
+
+.ribbon:before, .ribbon:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.ribbon:before {
+  /*左の山形*/
+  top: 0;
+  left: 0;
+  border-width: 30px 0px 30px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.ribbon:after {
+  /*右の山形*/
+  top: 0;
+  right: 0;
+  border-width: 30px 15px 30px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
+
+.title-ribbon {
+  display: inline-block;
+  position: relative;
+  padding: 15px 20px;
+  margin-bottom: 30px;
+  color: black;/*フォントカラー*/
+  background: #a6d3c8;/*リボンの色*/
+}
+
+.title-ribbon:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);/*折り返し部分*/
 }

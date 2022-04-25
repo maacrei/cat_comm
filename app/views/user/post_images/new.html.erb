@@ -6,7 +6,9 @@
       <p>ログアウトしてから会員登録をしてください。</p>
     <% else %>
     <div class="col-4">
-      <h2>投稿フォーム</h2>
+      <div class="ribbon">
+        <h2>投稿フォーム</h2>
+      </div>
       <!--エラーメッセージ-->
       <% if @post_image.errors.any? %>
         <div class="alert">

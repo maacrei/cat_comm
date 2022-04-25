@@ -1,5 +1,7 @@
 <div class="container">
-  <h2>投稿一覧</h2>
+  <div class="ribbon">
+    <h2>投稿一覧</h2>
+  </div>
     <div class="row">
       <div class="col-1"></div>
       <div class="col-11">
@@ -7,7 +9,7 @@
           <% post_images.each do |post_image| %>
           <div class="photo-hover">
             <%= link_to post_image_path(post_image.id) do %>
-              <%= image_tag post_image.get_image(260,260), class: "cat-photo" %><br>
+              <%= image_tag post_image.get_image(250,250), class: "cat-photo" %><br>
             <% end %>
             <%= post_image.title %><br>
             #<%= post_image.genre.name %><br>
@@ -17,7 +19,6 @@
           <% end %>
         </div>
         <%= paginate post_images %>
-
       </div>
     </div>
 </div>

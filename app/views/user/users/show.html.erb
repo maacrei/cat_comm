@@ -1,7 +1,9 @@
 <div class="container">
   <!--ログインしているユーザー名がゲストユーザーじゃなかったらマイページを表示-->
   <% if current_user.name != "guestuser" %>
-    <h2>マイページ</h2>
+    <div class="ribbon">
+      <h2>マイページ</h2>
+    </div>
       <div class="row">
         <div class="col-3">
           <p>ユーザー名<br><%= @user.name %></p>
@@ -14,7 +16,7 @@
             <% @post_images.each do |post_image| %>
             <div>
               <%= link_to post_image_path(post_image.id) do %>
-                <%= image_tag post_image.get_image(100,100) %>
+                <%= image_tag post_image.get_image(90,90), class: "cat-photo" %>
               <% end %>
               <p><%= post_image.post_comments.count %>コメント</p>
             </div>
@@ -30,7 +32,7 @@
               <% @favorite_list.each do |post_image| %>
               <div>
                 <%= link_to post_image_path(post_image.id) do %>
-                <%= image_tag post_image.get_image(100,100) %>
+                <%= image_tag post_image.get_image(90,90), class: "cat-photo" %>
                 <% end %>
                 <p><%= truncate(post_image.title, length:7) %></p>
               </div>
