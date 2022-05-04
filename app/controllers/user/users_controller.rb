@@ -11,7 +11,7 @@ class User::UsersController < ApplicationController
     # お気に入りリストの表示
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_image_id)
     # インスタンス変数 = Kaminari.paginate_array(配列).page(params[:page]).per(12)にすることでページネーションを表示できた
-    @favorite_list = Kaminari.paginate_array(PostImage.find(favorites)).page(params[:page]).per(12)
+    @favorite_list = Kaminari.paginate_array(PostImage.order(created_at: :desc).find(favorites)).page(params[:page]).per(12)
   end
 
   def edit
