@@ -43,6 +43,18 @@ ul {
   background-color: #a6d3c8;
 }
 
+.photo-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: baseline;
+  text-align: center;
+}
+
+.photo-hover {
+  width: 20%;
+}
+
 // 投稿一覧のレイアウト
 .d-flex {
   gap: 40px;

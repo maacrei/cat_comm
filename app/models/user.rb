@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   # 投稿ユーザー名で検索して、そのユーザーの投稿を一覧表示する
-  def self.search_for(content)
+  def self.user_name_like(content)
       PostImage.joins(:user).where("name LIKE ?", "%" + content + "%")
   end
 

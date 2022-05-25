@@ -22,12 +22,9 @@ class PostImage < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def self.search_for(content)
-    PostImage.where("title LIKE ?", "%" + content + "%")
-  end
-
-  def self.search(search_word)
-    PostImage.where(["genre.name LIKE ?", "#{search_word}"])
+  # タイトル名で検索して、そのジャンルの投稿を一覧表示する
+  def self.title_like(content)
+    where("title LIKE ?", "%" + content + "%")
   end
 
 end

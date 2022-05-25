@@ -27,13 +27,13 @@
 
 ## 設計書
 
-- [ER図](https://drive.google.com/file/d/1G6NdAIeNX5BumhhmDyLiVuilIMUJw5CV/view?usp=sharing)
+- [ER図](https://drive.google.com/file/d/1l8VLiAp821MhhT47-mxJrJJ1W2NarGVX/view?usp=sharing)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1aYLIPCvAZ-2sDzYVAOXFpLyAAJDIx9ZuUhTeGN5qtu0/edit?usp=sharing)
 - [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1CNMJOotBI90Od2qEq7ufm-I_xYR-sJ2iJX11gh60E1I/edit?usp=sharing)
 
 ## 開発環境
 
-- OS：Linux(CentOS)
+- OS：Amazon Linux 2
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
